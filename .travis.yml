@@ -1,0 +1,16 @@
+language: c
+matrix:
+  include:
+  - os: osx
+    env:
+    - PLATFORM=osx
+    - BREW_PACKAGES=automake autoconf libtool
+    before_install:
+    - brew update
+    - brew outdated $BREW_PACKAGES || brew upgrade $BREW_PACKAGES
+    script:
+    - pwd && ls ~
+    - ./bootstrap
+    - ./configure
+    - ./make
+    - pwd && ls ~
